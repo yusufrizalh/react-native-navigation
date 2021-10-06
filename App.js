@@ -4,12 +4,20 @@ import { StyleSheet, Text, View } from "react-native";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
 import HomeStack from "./stacks/HomeStack";
 import AboutStack from "./stacks/AboutStack";
 import ContactStack from "./stacks/ContactStack";
 
+import ActivityTab from "./tabs/ActivityTab";
+import MessageTab from "./tabs/MessageTab";
+import AccountTab from "./tabs/AccountTab";
+
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+const TopTab = createMaterialTopTabNavigator();
 
 const MyStackNavigator = () => {
   return (
@@ -45,11 +53,56 @@ const MyStackNavigator = () => {
   );
 };
 
+const MyTabNavigator = () => {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="ActivityTab" component={ActivityTab} />
+      <Tab.Screen name="MessageTab" component={MessageTab} />
+      <Tab.Screen name="AccountTab" component={AccountTab} />
+    </Tab.Navigator>
+  );
+};
+
+const MyTopTabNavigator = () => {
+  return (
+    <TopTab.Navigator
+      screenOptions={{
+        tabBarLabelStyle: { fontSize: 12, color: "#ffffff" },
+        tabBarStyle: { backgroundColor: "#d23d42" },
+      }}
+    >
+      <TopTab.Screen
+        name="ActivityTab"
+        component={ActivityTab}
+        options={{
+          title: "Activity",
+        }}
+      />
+      <TopTab.Screen
+        name="MessageTab"
+        component={MessageTab}
+        options={{
+          title: "Message",
+        }}
+      />
+      <TopTab.Screen
+        name="AccountTab"
+        component={AccountTab}
+        options={{
+          title: "Account",
+        }}
+      />
+    </TopTab.Navigator>
+  );
+};
+
 const App = () => {
   return (
     <NavigationContainer>
       {/* tempat meletakkan navigasi */}
-      <MyStackNavigator />
+      {/* <MyStackNavigator /> */}
+      {/* <MyTabNavigator /> */}
+      <MyTopTabNavigator />
     </NavigationContainer>
   );
 };

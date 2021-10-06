@@ -11,17 +11,47 @@ import ContactStack from "./stacks/ContactStack";
 
 const Stack = createNativeStackNavigator();
 
+const MyStackNavigator = () => {
+  return (
+    <Stack.Navigator initialRouteName="HomeStack">
+      <Stack.Screen
+        name="HomeStack"
+        component={HomeStack}
+        options={{
+          title: "Beranda",
+          headerStyle: { backgroundColor: "#493267" },
+          headerTintColor: "#ffffff",
+        }}
+      />
+      <Stack.Screen
+        name="AboutStack"
+        component={AboutStack}
+        options={{
+          title: "Tentang",
+          headerStyle: { backgroundColor: "#7bb3ff" },
+          headerTintColor: "#ffffff",
+        }}
+      />
+      <Stack.Screen
+        name="ContactStack"
+        component={ContactStack}
+        options={{
+          title: "Kontak",
+          headerStyle: { backgroundColor: "#ffffff" },
+          headerTintColor: "#000000",
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
 const App = () => {
-  return(
+  return (
     <NavigationContainer>
       {/* tempat meletakkan navigasi */}
-      <Stack.Navigator initialRouteName="HomeStack">
-        <Stack.Screen name="HomeStack" component={HomeStack} />
-        <Stack.Screen name="AboutStack" component={AboutStack} />
-        <Stack.Screen name="ContactStack" component={ContactStack} />
-      </Stack.Navigator>
+      <MyStackNavigator />
     </NavigationContainer>
   );
-}
+};
 
 export default App;

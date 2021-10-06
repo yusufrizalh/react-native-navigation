@@ -8,7 +8,11 @@ const HomeStack = ({ navigation }) => {
       <Button
         title="Tap to About"
         onPress={() => {
-          navigation.navigate("AboutStack");
+          navigation.navigate("AboutStack", {
+            itemID: 1065,
+            itemName: "Screen Protector",
+            itemPrice: 2500,
+          });
         }}
       />
     </View>

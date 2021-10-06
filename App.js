@@ -6,6 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import HomeStack from "./stacks/HomeStack";
 import AboutStack from "./stacks/AboutStack";
@@ -14,10 +15,14 @@ import ContactStack from "./stacks/ContactStack";
 import ActivityTab from "./tabs/ActivityTab";
 import MessageTab from "./tabs/MessageTab";
 import AccountTab from "./tabs/AccountTab";
+import SettingDrawer from "./drawers/SettingDrawer";
+import GroupDrawer from "./drawers/GroupDrawer";
+import FeatureDrawer from "./drawers/FeatureDrawer";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const TopTab = createMaterialTopTabNavigator();
+const Drawer = createDrawerNavigator();
 
 const MyStackNavigator = () => {
   return (
@@ -96,13 +101,24 @@ const MyTopTabNavigator = () => {
   );
 };
 
+const MyDrawerNavigator = () => {
+  return (
+    <Drawer.Navigator>
+      <Drawer.Screen name="SettingDrawer" component={SettingDrawer} />
+      <Drawer.Screen name="GroupDrawer" component={GroupDrawer} />
+      <Drawer.Screen name="FeatureDrawer" component={FeatureDrawer} />
+    </Drawer.Navigator>
+  );
+};
+
 const App = () => {
   return (
     <NavigationContainer>
       {/* tempat meletakkan navigasi */}
       {/* <MyStackNavigator /> */}
       {/* <MyTabNavigator /> */}
-      <MyTopTabNavigator />
+      {/* <MyTopTabNavigator /> */}
+      <MyDrawerNavigator />
     </NavigationContainer>
   );
 };
